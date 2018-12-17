@@ -15,31 +15,36 @@
         binderror="error"
       >
       </camera>
-     <!-->
-      <view class="btn-area first-btn">
-      <button type="primary" bindtap="togglePosition">切换摄像头</button>
-      </view>
-      <view class="btn-area">
-        <button type="primary" bindtap="takePhoto">拍照</button>
-      </view>
-      <view class="btn-area">
-        <button type="primary" bindtap="startRecord">开始录像</button>
-      </view>
-      <view class="btn-area">
-        <button type="primary" bindtap="stopRecord">结束录像</button>
-      </view>
-      <view class="btn-area">
-        <navigator url="/page/component/pages/camera-scan-code/camera-scan-code">
-          <button type="primary">扫描一维码</button>
-        </navigator>
-      </view>
-      <view class="preview-tips">预览</view>
+      <!-->
+      分割线
       <-->
-      
+    <block wx:for="{{doommData}}" wx:key="id">
+        <text wx:if="{{item.display}}" class="aon" style="animation: first {{item.time}}s linear forwards;top:{{item.top}}%;color:{{item.color}};">
+            {{item.text}}
+        </text>
+    </block>
+    <!-->
+    分割线
+    <-->
       <image wx:if="{{src}}" mode="widthFix" class="photo" src="{{src}}"></image>
       <video wx:if="{{videoSrc}}" class="video" src="{{videoSrc}}"></video>
     </view>
   </view>
+
+  <view class="weui-cells">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">弹幕内容</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input bindblur="bindInputBlur" class="weui-input" type="text" placeholder="在此处输入弹幕内容" />
+          </view>
+        </view>
+      </view>
+      <view class="btn-area">
+        <button bindtap="bindSendDanmu" class="page-body-button" type="primary"                       formType="submit">发送弹幕</button>
+      </view>
+
   <!-->
   自带一个链接，可以跳转，图片可以更改
   <-->
