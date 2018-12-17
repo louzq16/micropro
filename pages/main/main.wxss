@@ -42,15 +42,10 @@ form {
 }
 
 /**danmu**/
-.doomview{
-  z-index: 3;
-  height: 80%;
-  width: 100%;
-  position: absolute;
-}
 .aon{
 position: absolute;
 white-space:nowrap;/* 防止向下换行*/
+font-size: 43rpx;
 }
 /**定义从右边向左边的移动的动画**/
 @keyframes first{

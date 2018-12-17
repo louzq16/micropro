@@ -8,6 +8,7 @@ function getRandomColor() {
   return '#' + rgb.join('')
 }
 var doommList = [];
+var i=0;
 class Doomm {
   constructor(text, top, time, color) {
     this.text = text;
@@ -15,15 +16,7 @@ class Doomm {
     this.time = time;
     this.color = color;
     this.display = true;
-    let that = this;
-    /*
-    setTimeout(function () {
-      doommList.splice(doommList.indexOf(that), 1);
-      page.setData({
-        doommData: doommList
-      })
-    }, this.time * 100)//定时器动画完成后执行删除
-    */
+    this.id = i++;
   }
 }
 Page(
