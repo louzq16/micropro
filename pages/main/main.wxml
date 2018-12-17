@@ -35,7 +35,6 @@
       </view>
       <view class="preview-tips">预览</view>
       <-->
-
       
       <image wx:if="{{src}}" mode="widthFix" class="photo" src="{{src}}"></image>
       <video wx:if="{{videoSrc}}" class="video" src="{{videoSrc}}"></video>
