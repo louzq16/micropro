@@ -48,12 +48,12 @@ input {
   font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
 }
 .page-head{
-  padding: 60rpx 50rpx 80rpx;
+  padding: 5rpx 5rpx 5rpx;
   text-align: center;
 }
 .page-head-title{
   display: inline-block;
-  padding: 0 40rpx 20rpx 40rpx;
+  padding: 5rpx 5rpx 5rpx;
   font-size: 32rpx;
   color: #BEBEBE;
 }

@@ -20,5 +20,4 @@
     <text class="user-motto">{{motto}}</text>
   </view>
   <-->
-  <template is="foot" />
 </view>

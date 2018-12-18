@@ -1,7 +1,10 @@
 @import "../common/lib/weui.wxss";
 
+page{
+height: 100%
+}
 camera {
-  height: 500rpx;
+  height: 100%;
 }
 
 .preview-tips {
@@ -14,7 +17,8 @@ camera {
 }
 
 .btn-area {
-  margin-top: 0;
+  margin-top: 30rpx;
+  width: 230rpx;
 }
 
 .first-btn {
