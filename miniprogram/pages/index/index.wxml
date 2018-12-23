@@ -2,7 +2,7 @@
 <view class="container">
  
     <view class="btn-area first-btn">
-        <button type="primary" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindgetUserInfo">授权登录</button>
+        <button bindtap="bindViewTap"  type="primary" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindgetUserInfo">授权登录</button>
     </view>
      <!-->
   <view class="userinfo">

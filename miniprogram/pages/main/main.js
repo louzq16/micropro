@@ -2,6 +2,7 @@
 //云端数据库
 wx.cloud.init();
 const db = wx.cloud.database();
+const app = getApp()
 var doommList = [];
 var danmu_o=[];
 var i=0;
@@ -17,6 +18,9 @@ var c1=1;
 //var batchTimes=0;
 //这是数据库的代号
 var dbname='1';
+var flag=5;
+
+var batchTimes=0;
 
 class Doomm {
   constructor(text) {
@@ -54,72 +58,53 @@ Page(
     danmuori:[],
 
     inputValue: null,
-    fisrtflag:5,
+    fisrtflag:15,
     compass0:0,
     deltacompass:0
   },
   onLoad() {
     this.ctx = wx.createCameraContext();
-    
+    dbname=app.globalData.dbname ;
+    //dbname='1';
     //罗盘回调函数
     wx.startCompass();
-    var that=this;
-    wx.onCompassChange(function(res){
-      console.log(res);
-      if(that.data.fisrtflag>0)
+    var that = this;
+    wx.onCompassChange(function (res) {
+      //console.log(res);
+      if(flag>0)
       {
-        that.setData({compass0:res.direction.toFixed(2),deltacompass:0,fisrtflag:that.data.fisrtflag-1});
+        flag=flag-1;
       }
-      else
-      {
-        that.setData({ deltacompass: res.direction.toFixed(2)-that.data.compass0 });
-      }
-      if(that.data.deltacompass>50||that.data.deltacompass<-50)
-      {
-        that.setData({display:false})
-      }
-      else
-      {
-        that.setData({ display: true })
+      else{
+        flag=5;
+        if (that.data.fisrtflag > 0) {
+          that.setData({ compass0: res.direction.toFixed(2), deltacompass: 0, fisrtflag: that.data.fisrtflag - 1 });
+        }
+        else {
+          that.setData({ deltacompass: res.direction.toFixed(2) - that.data.compass0 });
+        }
+        if (that.data.deltacompass > 60 || that.data.deltacompass < -60) {
+          //偏差在60度之外不显示弹幕
+          that.setData({ display: false, doommData: []})// danmuori:[]})
+          doommList=[]
+        }
+        else {
+          that.setData({ display: true })
+        }
       }
     })
-
+    
     //danmu_o.push(new Doomm2("welcome!"));
     //获取数据库的记录
-    /*
-    db.collection('1').get({
-      success(res) {
-        for (let ii = 0; ii < 20; ii++) {
-          danmu_o.push(new Doomm(res.data[ii].danmu));
-        }
-        console.log(danmu_o);
-      }
-    })
-    */
+  
     db.collection(dbname).count({
       success: function (res) 
       {
         sum = res.total;
-        console.log(sum);
-        //batchTimes = Math.ceil(sum / 20) - 1;
-        //console.log(batchTimes);
-        /*
-        for (let i = batchTimes; i > 0; i--) {
-          //setTimeout(function () {
-            //获取记录
-            db.collection('1').skip(20 * i).get({
-              success(res) {
-                for (let ii = 0; ii < 20; ii++) {
-                  danmu_o.push(new Doomm(res.data[ii].danmu));
-                }
-                console.log(danmu_o);
-              }
-            })
-          //}, 2000);
-        } 
-        */
+        console.log(sum);  
       }
     })
+    sum=20;
     
   },
   bindInputBlur(e) {
@@ -139,7 +124,7 @@ Page(
             danmu_o.push(new Doomm(res.data[ii].danmu));
             c=c+1;
           }
-          //console.log(danmu_o);
+         // console.log(danmu_o);
         }
       })
     }

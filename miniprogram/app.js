@@ -34,6 +34,7 @@ App({
     })
   },
   globalData: {
+    dbname:null,//扫码指定的数据库全局变量
     userInfo: null
   }
 })

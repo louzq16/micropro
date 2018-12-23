@@ -1,6 +1,7 @@
 //index.js
 //登录界面
 const app = getApp()
+//var dbname;
 
 Page({
   data: {
@@ -11,6 +12,13 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
+    wx.scanCode({
+      success: (res) => {
+        app.globalData.dbname = res.result;
+      },
+      complete: (res) => {
+      }
+    })
     wx.reLaunch({
       url: '../main/main'
     })
@@ -20,6 +28,13 @@ Page({
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
+      })
+      wx.scanCode({
+        success:(res)=>{
+          app.globalData.dbname=res.result;
+        },
+        complete: (res) => {
+        }
       })
       wx.reLaunch({
         url: '../main/main',
@@ -33,6 +48,13 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        wx.scanCode({
+          success: (res) => {
+            app.globalData.dbname = res.result;
+          },
+          complete: (res) => {
+          }
+        })
         wx.reLaunch({
           url: '../main/main',
         })
@@ -45,6 +67,13 @@ Page({
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true
+          })
+          wx.scanCode({
+            success: (res) => {
+              app.globalData.dbname = res.result;
+            },
+            complete: (res) => {
+            }
           })
           wx.reLaunch({
             url: '../main/main',
