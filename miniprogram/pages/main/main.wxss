@@ -1,0 +1,70 @@
+@import "../common/lib/weui.wxss";
+
+page{
+height: 100%
+}
+camera {
+  height: 100%;
+}
+
+.preview-tips {
+  margin: 20rpx 0;  
+}
+
+.photo, .video {
+  margin-top: 50rpx;
+  width: 100%;
+}
+
+.btn-area {
+  margin-top: 30rpx;
+  width: 230rpx;
+}
+
+.first-btn {
+  margin-top: 30rpx;
+}
+
+form {
+  margin-top: 30rpx;
+}
+
+.weui-cell__bd {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20rpx 0;
+  min-height: 60rpx;
+}
+
+.weui-cells{
+  margin-top: 80rpx;
+  text-align: left;
+}
+.weui-label{
+  width: 5em;
+}
+
+/**danmu**/
+.aon{
+position: absolute;
+white-space:nowrap;/* 防止向下换行*/
+font-size: 40rpx;
+font-family:'Times New Roman', Times, serif;
+background-color:#000000;
+background-clip: padding-box;
+height: 45rpx;
+background-repeat: no-repeat;
+
+opacity:0.65;
+
+text-align:center;
+border:5rpx solid #000000;
+padding:9rpx 9rpx 9rpx 9rpx;
+border-radius:38rpx;
+}
+/**定义从右边向左边的移动的动画**/
+@keyframes first{
+  from{left: 100%; }
+  to{left: -50%;}
+}
