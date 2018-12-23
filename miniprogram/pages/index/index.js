@@ -15,13 +15,14 @@ Page({
     wx.scanCode({
       success: (res) => {
         app.globalData.dbname = res.result;
+        wx.reLaunch({
+          url: '../main/main'
+        })
       },
       complete: (res) => {
       }
     })
-    wx.reLaunch({
-      url: '../main/main'
-    })
+   
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -32,13 +33,14 @@ Page({
       wx.scanCode({
         success:(res)=>{
           app.globalData.dbname=res.result;
+          wx.reLaunch({
+            url: '../main/main',
+          })
         },
         complete: (res) => {
         }
       })
-      wx.reLaunch({
-        url: '../main/main',
-      })
+      
     } 
     else if (this.data.canIUse){
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -51,13 +53,14 @@ Page({
         wx.scanCode({
           success: (res) => {
             app.globalData.dbname = res.result;
+            wx.reLaunch({
+              url: '../main/main',
+            })
           },
           complete: (res) => {
           }
         })
-        wx.reLaunch({
-          url: '../main/main',
-        })
+        
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -71,13 +74,14 @@ Page({
           wx.scanCode({
             success: (res) => {
               app.globalData.dbname = res.result;
+              wx.reLaunch({
+                url: '../main/main',
+              })
             },
             complete: (res) => {
             }
           })
-          wx.reLaunch({
-            url: '../main/main',
-          })
+          
         }
       })
     }
